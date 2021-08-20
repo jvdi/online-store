@@ -5,10 +5,11 @@
 <div class="col-12">
 <header class="row">
 {% include 'shop/partials/nav-top.html' %}
+<!-- Header toolbar -->
 <div class="col-12 bg-white pt-4">
     <div class="row">
         <div class="col-md-4">
-            <div class=" text-center text-lg-left">
+            <div class="text-center text-lg-left">
                 <a href="index.html"><img src="{% static 'shop/images/ecommercelogo.png' %}" alt="Ecommerce Store logo" width="150px"></a>
             </div>
         </div>
@@ -16,7 +17,7 @@
             <form action="#">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="search" class="form-control border-dark" placeholder="Search..." required>
+                        <input type="search" class="form-control border-dark" placeholder="جستجو ..." required>
                         <div class="input-group-append">
                             <button class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
                         </div>
@@ -24,18 +25,22 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-4 text-center text-lg-right header-item-holder">
+        <div class="col-md-4 text-center text-lg-left header-item-holder">
             <a href="#" class="header-item">
-                <i class="fas fa-heart mr-2" style="color:red;"></i><span id="header-favorite">0</span>
+                <i class="fas fa-heart mr-2" style="color:red;"></i>
+                <span id="header-favorite">0</span>
             </a>
             <a href="cart.html" class="header-item">
-                <i class="fas fa-shopping-bag mr-2" style="color:brown;"></i><span id="header-qty" class="mr-3">2</span>
-                <i class="fas fa-money-bill-wave mr-2" style="color:seagreen;"></i><span id="header-price">$4,000</span>
+                <i class="fas fa-shopping-bag mr-2" style="color:brown;"></i>
+                <span id="header-qty" class="mr-3">2</span>
             </a>
+                <i class="fas fa-money-bill-wave mr-2" style="color:seagreen;"></i>
+                <span id="header-price">4,000</span>
         </div>
     </div>
 {% include 'shop/partials/nav-bar.html' %}
 </div>
+<!-- Header toolbar - end -->
 </header>
 </div>
 <!-- Header - end -->
