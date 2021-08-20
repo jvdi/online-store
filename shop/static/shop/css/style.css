@@ -21,11 +21,11 @@ a {
 .top-nav li {
     display: inline;
     padding: .1rem .5rem;
-    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
 }
 
 .top-nav li:last-of-type {
-    border-right: 0;
+    border-left: 0;
 }
 
 .top-nav li a {
