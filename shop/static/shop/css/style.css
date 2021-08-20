@@ -3,7 +3,7 @@
 
 body {
     background-color: #eaeaea;
-    font-family: 'Play', sans-serif;
+    /* font-family: 'Play', sans-serif; */
 }
 
 a {
@@ -15,7 +15,8 @@ a {
     padding: 0;
     list-style: none;
     font-size: 13px;
-    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    /* font-family: 'Open Sans', sans-serif; */
 }
 
 .top-nav li {
