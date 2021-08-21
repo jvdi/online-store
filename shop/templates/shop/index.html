@@ -36,128 +36,372 @@
 </div>
 <!-- Slider - end -->
 <!-- Featured Products -->
-<div class="col-12">
+<div class="col-12 py-3">
     <div class="row">
-        <div class="col-12 py-3">
-            <div class="row">
-                <div class="col-12 text-center text-uppercase">
-                    <h2>Featured Products</h2>
-                </div>
-            </div>
-            <div class="row">
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/huawei-honor-v10.jpg' %}" class="img-fluid" >
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Huawei Honor V10</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price-old">
-                                    $500
-                                </span>
-                                <br>
-                                <span class="product-price">
-                                    $447
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-md-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/huawei-p30pro.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Huawei P30 Pro</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $1174
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-md-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/geforcegtx-970.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">MSI GAMING GeForce GTX 970 4GB OC</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="product-price-old">
-                                    $500
-                                </div>
-                                <span class="product-price">
-                                    $459
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/xfx-RX590.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">XFX RX 590 Fatboy 8GB OC</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $209
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-            </div>
+        <div dir="ltr" class="col-4">
+            <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <h2>محصولات ویژه</h2>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                <i class="fa fa-arrow-left"></i>
+            </a>
         </div>
     </div>
+    <div class="col-12">
+    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+        <div class="row">
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-honor-v10.jpg' %}" class="img-fluid" >
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei Honor V10</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price-old">
+                            $500
+                        </span>
+                        <br>
+                        <span class="product-price">
+                            $447
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-p30pro.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei P30 Pro</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $1174
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/geforcegtx-970.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">MSI GAMING GeForce GTX 970 4GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="product-price-old">
+                            $500
+                        </div>
+                        <span class="product-price">
+                            $459
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/xfx-RX590.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">XFX RX 590 Fatboy 8GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $209
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        </div>
+        </div>
+
+        <div class="carousel-item">
+        <div class="row">
+
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-p30pro.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei P30 Pro</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $1174
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/geforcegtx-970.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">MSI GAMING GeForce GTX 970 4GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="product-price-old">
+                            $500
+                        </div>
+                        <span class="product-price">
+                            $459
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+        
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/xfx-RX590.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">XFX RX 590 Fatboy 8GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $209
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-honor-v10.jpg' %}" class="img-fluid" >
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei Honor V10</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price-old">
+                            $500
+                        </span>
+                        <br>
+                        <span class="product-price">
+                            $447
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        </div>
+        </div>
+
+        <div class="carousel-item">
+        <div class="row">
+
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-p30pro.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei P30 Pro</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $1174
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+        
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-md-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/geforcegtx-970.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">MSI GAMING GeForce GTX 970 4GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="product-price-old">
+                            $500
+                        </div>
+                        <span class="product-price">
+                            $459
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+        
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/xfx-RX590.jpg' %}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">XFX RX 590 Fatboy 8GB OC</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price">
+                            $209
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+        
+        <!-- Product -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="product.html">
+                            <img src="{% static 'shop/images/huawei-honor-v10.jpg' %}" class="img-fluid" >
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">Huawei Honor V10</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price-old">
+                            $500
+                        </span>
+                        <br>
+                        <span class="product-price">
+                            $447
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product -->
+
+        </div>
+        </div>
+    
+    </div>
+    </div>
+    </div>
+
 </div>
-<!-- Featured Products -->
+<!-- Featured Products - end -->
 
 <div class="col-12">
     <hr>
