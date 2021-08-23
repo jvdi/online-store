@@ -39,7 +39,7 @@
 <div class="col-12 py-3">
     <div class="row">
         <div dir="ltr" class="col-4">
-            <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+            <a class="btn btn-primary mb-3" href="#carousel-featured_products" role="button" data-bs-slide="next">
                 <i class="fa fa-arrow-right"></i>
             </a>
         </div>
@@ -47,13 +47,13 @@
             <h2>محصولات ویژه</h2>
         </div>
         <div class="col-4">
-            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+            <a class="btn btn-primary mb-3 mr-1" href="#carousel-featured_products" role="button" data-bs-slide="prev">
                 <i class="fa fa-arrow-left"></i>
             </a>
         </div>
     </div>
     <div class="col-12">
-    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+    <div id="carousel-featured_products" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         
         <div class="carousel-item active">
@@ -75,12 +75,12 @@
                 <div class="row h-100">
                     <div class="col-12 p-0 mb-3">
                         <a href="#">
-                            <img id="img-id{{ forloop.counter }}" src="{{ data.image.url }}" class="img-fluid" >
+                            <img id="img-id-featured_products{{ forloop.counter }}" src="{{ data.image.url }}" class="img-fluid" >
                             <script>
-                                var img = document.getElementById("img-id{{ forloop.counter }}");
+                                var img = document.getElementById("img-id-featured_products{{ forloop.counter }}");
                                 var attr = img.getAttributeNode("src").value;
                                 var custom_src = attr.replace("/mysite/shop/static/","/static/");
-                                document.getElementById("img-id{{ forloop.counter }}").src = custom_src; 
+                                document.getElementById("img-id-featured_products{{ forloop.counter }}").src = custom_src; 
                             </script>
                         </a>
                     </div>
@@ -123,270 +123,184 @@
 </div>
 
 <!-- Latest Product -->
-<div class="col-12">
+<div class="col-12 py-3">
     <div class="row">
-        <div class="col-12 py-3">
-            <div class="row">
-                <div class="col-12 text-center text-uppercase">
-                    <h2>Latest Products</h2>
-                </div>
-            </div>
-            <div class="row">
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <span class="new">New</span>
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-1.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price-old">
-                                    $500
-                                </span>
-                                <br>
-                                <span class="product-price">
-                                    $500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <span class="new">New</span>
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-2.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $1,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <span class="new">New</span>
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-3.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">HP Envy Specter 360</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="product-price-old">
-                                    $2,800
-                                </div>
-                                <span class="product-price">
-                                    $2,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <span class="new">New</span>
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-4.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Dell Alienware Area 51</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $4,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-            </div>
+        <div dir="ltr" class="col-4">
+            <a class="btn btn-primary mb-3" href="#carousel-latest_product" role="button" data-bs-slide="next">
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <h2>محصولات جدید</h2>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary mb-3 mr-1" href="#carousel-latest_product" role="button" data-bs-slide="prev">
+                <i class="fa fa-arrow-left"></i>
+            </a>
         </div>
     </div>
+    <div class="col-12">
+    <div id="carousel-latest_product" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+        <div class="row">
+
+        {% for data in product %}
+        {% if forloop.counter|divisibleby:5 %}
+        
+        </div>
+        </div>
+
+        <div class="carousel-item">
+        <div class="row">
+
+        {% endif %}
+        <!-- Product {{ forloop.counter }} -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="#">
+                            <img id="img-id-latest_product{{ forloop.counter }}" src="{{ data.image.url }}" class="img-fluid" >
+                            <script>
+                                var img = document.getElementById("img-id-latest_product{{ forloop.counter }}");
+                                var attr = img.getAttributeNode("src").value;
+                                var custom_src = attr.replace("/mysite/shop/static/","/static/");
+                                document.getElementById("img-id-latest_product{{ forloop.counter }}").src = custom_src; 
+                            </script>
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">{{ data.name }}</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price-old">
+                        {% if data.price_old is null %}
+                        {% else %}
+                            {{ data.price_old }} تومان
+                        {% endif %}
+                        </span>
+                        <br>
+                        <span class="product-price">
+                            {{ data.price }} تومان
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product {{ forloop.counter }} - end-->
+        {% endfor %}
+
+        </div>
+        </div>
+    
+    </div>
+    </div>
+    </div>
+
 </div>
-<!-- Latest Products -->
+<!-- Latest Products - end -->
 
 <div class="col-12">
     <hr>
 </div>
 
 <!-- Top Selling Products -->
-<div class="col-12">
+<div class="col-12 py-3">
     <div class="row">
-        <div class="col-12 py-3">
-            <div class="row">
-                <div class="col-12 text-center text-uppercase">
-                    <h2>Top Selling Products</h2>
-                </div>
-            </div>
-            <div class="row">
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-1.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price-old">
-                                    $500
-                                </span>
-                                <br>
-                                <span class="product-price">
-                                    $500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-2.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $1,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-3.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">HP Envy Specter 360</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="product-price-old">
-                                    $2,800
-                                </div>
-                                <span class="product-price">
-                                    $2,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-                <!-- Product -->
-                <div class="col-lg-3 col-sm-6 my-3">
-                    <div class="col-12 bg-white text-center h-100 product-item">
-                        <div class="row h-100">
-                            <div class="col-12 p-0 mb-3">
-                                <a href="product.html">
-                                    <img src="{% static 'shop/images/image-4.jpg' %}" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <a href="product.html" class="product-name">Dell Alienware Area 51</a>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <span class="product-price">
-                                    $4,500
-                                </span>
-                            </div>
-                            <div class="col-12 mb-3 align-self-end">
-                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-
-            </div>
+        <div dir="ltr" class="col-4">
+            <a class="btn btn-primary mb-3" href="#carousel-top_selling_products" role="button" data-bs-slide="next">
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <h2>محصولات پرفروش</h2>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary mb-3 mr-1" href="#carousel-top_selling_products" role="button" data-bs-slide="prev">
+                <i class="fa fa-arrow-left"></i>
+            </a>
         </div>
     </div>
+    <div class="col-12">
+    <div id="carousel-top_selling_products" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+        <div class="row">
+
+        {% for data in product %}
+        {% if forloop.counter|divisibleby:5 %}
+        
+        </div>
+        </div>
+
+        <div class="carousel-item">
+        <div class="row">
+
+        {% endif %}
+        <!-- Product {{ forloop.counter }} -->
+        <div class="col-lg-3 col-sm-6 my-3">
+            <div class="col-12 bg-white text-center h-100 product-item">
+                <div class="row h-100">
+                    <div class="col-12 p-0 mb-3">
+                        <a href="#">
+                            <img id="img-id-top_selling_products{{ forloop.counter }}" src="{{ data.image.url }}" class="img-fluid" >
+                            <script>
+                                var img = document.getElementById("img-id-top_selling_products{{ forloop.counter }}");
+                                var attr = img.getAttributeNode("src").value;
+                                var custom_src = attr.replace("/mysite/shop/static/","/static/");
+                                document.getElementById("img-id-top_selling_products{{ forloop.counter }}").src = custom_src; 
+                            </script>
+                        </a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <a href="product.html" class="product-name">{{ data.name }}</a>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <span class="product-price-old">
+                        {% if data.price_old is null %}
+                        {% else %}
+                            {{ data.price_old }} تومان
+                        {% endif %}
+                        </span>
+                        <br>
+                        <span class="product-price">
+                            {{ data.price }} تومان
+                        </span>
+                    </div>
+                    <div class="col-12 mb-3 align-self-end">
+                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product {{ forloop.counter }} - end-->
+        {% endfor %}
+
+        </div>
+        </div>
+    
+    </div>
+    </div>
+    </div>
+
 </div>
-<!-- Top Selling Products -->
+<!-- Latest Products - end -->
 
 <div class="col-12 py-3 bg-light d-sm-block d-none">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-3 col ml-auto large-holder">
             <div class="row">
                 <div class="col-auto ml-auto large-icon">
                     <i class="fas fa-money-bill" style="color:seagreen;"></i>
                 </div>
                 <div class="col-auto mr-auto large-text">
-                    Best Price
+                    بهترین قیمت
                 </div>
             </div>
         </div>
@@ -396,7 +310,7 @@
                     <i class="fas fa-truck-moving"></i>
                 </div>
                 <div class="col-auto mr-auto large-text">
-                    Fast Delivery
+                    تحویل سریع
                 </div>
             </div>
         </div>
@@ -406,12 +320,13 @@
                     <i class="fas fa-check" style="color: limegreen;"></i>
                 </div>
                 <div class="col-auto mr-auto large-text">
-                    Genuine Products
+                    کالای اصلی
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </main>
 </div>
 <!-- Main Content - end -->
