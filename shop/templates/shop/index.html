@@ -60,6 +60,7 @@
         <div class="row">
 
         {% for data in product %}
+        {% if data.special == 1 %}
         {% if forloop.counter|divisibleby:5 %}
         
         </div>
@@ -106,6 +107,7 @@
             </div>
         </div>
         <!-- Product {{ forloop.counter }} - end-->
+        {% endif %}
         {% endfor %}
 
         </div>
@@ -146,7 +148,7 @@
         <div class="carousel-item active">
         <div class="row">
 
-        {% for data in product %}
+        {% for data in latest_product_list %}
         {% if forloop.counter|divisibleby:5 %}
         
         </div>
@@ -233,7 +235,7 @@
         <div class="carousel-item active">
         <div class="row">
 
-        {% for data in product %}
+        {% for data in top_selling_product_list %}
         {% if forloop.counter|divisibleby:5 %}
         
         </div>
