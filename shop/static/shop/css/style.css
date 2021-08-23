@@ -184,11 +184,11 @@ a.product-name:hover, a.product-name:focus {
 }
 
 .large-holder {
-    border-right: 1px solid #c0c0c0;
+    /* border-left: 1px solid #c0c0c0; */
 }
 
 .large-holder:last-of-type {
-    border-right: 0;
+    /* border-left: 0; */
 }
 
 .large-icon {
