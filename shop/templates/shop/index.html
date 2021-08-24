@@ -59,8 +59,8 @@
         <div class="carousel-item active">
         <div class="row">
 
-        {% for data in product %}
-        {% if data.special == 1 %}
+        {% for data in special_product_list %}
+        {% if forloop.counter < 9 %}
         {% if forloop.counter|divisibleby:5 %}
         
         </div>
