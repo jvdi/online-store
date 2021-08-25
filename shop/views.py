@@ -13,3 +13,9 @@ def index(request):
         'top_selling_product_list':top_selling_product_list,
         }
     return render(request, 'shop/index.html', context)
+
+def cart(request):
+    # dictionary for compile template -> variables
+    context={}
+    # render for send variable and detail to template
+    return render(request, 'shop/cart.html', context)
