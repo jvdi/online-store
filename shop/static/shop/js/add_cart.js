@@ -27,10 +27,12 @@ open.onsuccess = function() {
             var a = getId.result.amount
             var b = a+=1
             store.put({id: id, amount: b});
+            document.getElementById('amount-'+id).innerHTML = b;
         }else{
             // Add some data
             // store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
             store.put({id: id, amount: 1});
+            document.getElementById('amount-'+id).innerHTML = 1;
         }
     };   
 
