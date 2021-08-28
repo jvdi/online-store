@@ -2,6 +2,44 @@
 {% block title %}فروشگاه اینترنتی - خانه{% endblock title %}
 {% block body %}{% load static %}
 {% include 'shop/partials/header.html' %}
+<script>
+function check_cart(id){
+// Open (or create) the database
+var open = indexedDB.open("site_data");
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("cart", {keyPath: "id"});
+    var index = store.createIndex("NameIndex", ["id",]);
+};
+
+open.onsuccess = function() {
+    // Start a new transaction
+    var db = open.result;
+    var tx = db.transaction("cart", "readwrite");
+    var store = tx.objectStore("cart");
+    var index = store.index("NameIndex");
+
+    // Query the data
+    var getId = store.get(id);
+    getId.onsuccess = function() {
+        if (typeof getId.result !== 'undefined') {
+            // console.log(getId.result.amount);  // => "amount"
+            var a = getId.result.amount
+            document.getElementById('amount-'+id).innerHTML = a;
+        }else{
+            document.getElementById('amount-'+id).innerHTML = 0;
+        }
+    };   
+
+    // Close the db when the transaction is done
+    tx.oncomplete = function() {
+        db.close();
+    };
+}    
+};
+</script>
 <!-- Main Content -->
 <div class="col-12">
 <main class="row">
@@ -103,47 +141,7 @@
                     <div class="col-12 mb-3 align-self-end">
                         <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id}})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
                         <hr />
-                        <span id="amount-{{ data.id }}">
-                            <script>
-                                function check_cart(id){
-                                    // Open (or create) the database
-                                    var open = indexedDB.open("site_data");
-                                    
-                                    // Create the schema
-                                    open.onupgradeneeded = function() {
-                                        var db = open.result;
-                                        var store = db.createObjectStore("cart", {keyPath: "id"});
-                                        var index = store.createIndex("NameIndex", ["id",]);
-                                    };
-                                    
-                                    open.onsuccess = function() {
-                                        // Start a new transaction
-                                        var db = open.result;
-                                        var tx = db.transaction("cart", "readwrite");
-                                        var store = tx.objectStore("cart");
-                                        var index = store.index("NameIndex");
-                                    
-                                        // Query the data
-                                        var getId = store.get(id);
-                                        getId.onsuccess = function() {
-                                            if (typeof getId.result !== 'undefined') {
-                                                // console.log(getId.result.amount);  // => "amount"
-                                                var a = getId.result.amount
-                                                document.getElementById('amount-'+id).innerHTML = a;
-                                            }else{
-                                                document.getElementById('amount-'+id).innerHTML = 0;
-                                            }
-                                        };   
-                                    
-                                        // Close the db when the transaction is done
-                                        tx.oncomplete = function() {
-                                            db.close();
-                                        };
-                                    }    
-                                    };
-                                check_cart({{ data.id }});
-                            </script>
-                        </span>
+                        <span id="amount-{{ data.id }}"><script>check_cart({{ data.id }});</script></span>
                     </div>
                 </div>
             </div>
@@ -231,7 +229,9 @@
                         </span>
                     </div>
                     <div class="col-12 mb-3 align-self-end">
-                        <button class="btn btn-outline-dark" type="button" onclick="add_cart()"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id}})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <hr />
+                        <span id="amount-{{ data.id }}"><script>check_cart({{ data.id }});</script></span>
                     </div>
                 </div>
             </div>
@@ -318,7 +318,9 @@
                         </span>
                     </div>
                     <div class="col-12 mb-3 align-self-end">
-                        <button class="btn btn-outline-dark" type="button" onclick="add_cart()"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id}})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <hr />
+                        <span id="amount-{{ data.id }}"><script>check_cart({{ data.id }});</script></span>
                     </div>
                 </div>
             </div>
