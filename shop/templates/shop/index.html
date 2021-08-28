@@ -103,7 +103,47 @@
                     <div class="col-12 mb-3 align-self-end">
                         <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id}})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
                         <hr />
-                        <span style="color: white;background-color: black; border-radius: 40%;" id="amount-{{ data.id }}"></span>
+                        <span style="color: white;background-color: black; border-radius: 40%;" id="amount-{{ data.id }}">
+                            <script>
+                                function check_cart(id){
+                                    // Open (or create) the database
+                                    var open = indexedDB.open("site_data");
+                                    
+                                    // Create the schema
+                                    open.onupgradeneeded = function() {
+                                        var db = open.result;
+                                        var store = db.createObjectStore("cart", {keyPath: "id"});
+                                        var index = store.createIndex("NameIndex", ["id",]);
+                                    };
+                                    
+                                    open.onsuccess = function() {
+                                        // Start a new transaction
+                                        var db = open.result;
+                                        var tx = db.transaction("cart", "readwrite");
+                                        var store = tx.objectStore("cart");
+                                        var index = store.index("NameIndex");
+                                    
+                                        // Query the data
+                                        var getId = store.get(id);
+                                        getId.onsuccess = function() {
+                                            if (typeof getId.result !== 'undefined') {
+                                                // console.log(getId.result.amount);  // => "amount"
+                                                var a = getId.result.amount
+                                                document.getElementById('amount-'+id).innerHTML = a;
+                                            }else{
+                                                document.getElementById('amount-'+id).innerHTML = 0;
+                                            }
+                                        };   
+                                    
+                                        // Close the db when the transaction is done
+                                        tx.oncomplete = function() {
+                                            db.close();
+                                        };
+                                    }    
+                                    };
+                                check_cart({{ data.id }});
+                            </script>
+                        </span>
                     </div>
                 </div>
             </div>
