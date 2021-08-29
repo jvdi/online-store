@@ -39,6 +39,46 @@ open.onsuccess = function() {
     };
 }    
 };
+
+function remove_cart(id){
+// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+// Open (or create) the database
+var open = indexedDB.open("site_data");
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("cart", {keyPath: "id"});
+    var index = store.createIndex("NameIndex", ["id",]);
+};
+
+open.onsuccess = function() {
+    // Start a new transaction
+    var db = open.result;
+    var tx = db.transaction("cart", "readwrite");
+    var store = tx.objectStore("cart");
+    var index = store.index("NameIndex");
+
+    // Query the data
+    var getId = store.get(id);
+    getId.onsuccess = function() {
+        if (typeof getId.result !== 'undefined') {
+            // console.log(getId.result.amount);  // => "amount"
+            var a = getId.result.amount
+            var b = a-=1
+            store.put({id: id, amount: b});
+            document.getElementById('amount-'+id).innerHTML = b;
+        }
+    };   
+
+    // Close the db when the transaction is done
+    tx.oncomplete = function() {
+        db.close();
+    };
+}
+};
 </script>
 <!-- Main Content -->
 <div class="col-12">
@@ -139,7 +179,10 @@ open.onsuccess = function() {
                         </span>
                     </div>
                     <div class="col-12 mb-3 align-self-end">
-                        <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id}})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <button class="btn btn-outline-dark" type="button" onclick="add_cart({{ data.id }})"><i class="fas fa-cart-plus mr-2"></i>افزودن به سبد خرید</button>
+                        <button class="btn btn-outline-dark" type="button" onclick="remove_cart({{ data.id }})">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/></svg>
+                        </button>
                         <hr />
                         <span id="amount-{{ data.id }}"><script>check_cart({{ data.id }});</script></span>
                     </div>
