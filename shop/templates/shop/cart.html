@@ -27,7 +27,44 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+<script>
+// Open (or create) the database
+var open = indexedDB.open("site_data");
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("cart", {keyPath: "id"});
+    var index = store.createIndex("NameIndex", ["id",]);
+};
+
+open.onsuccess = function() {
+    // Start a new transaction
+    var db = open.result;
+    var tx = db.transaction("cart", "readwrite");
+    var store = tx.objectStore("cart");
+    var index = store.index("NameIndex");
+
+    // Query the data
+    a=22;
+    var getId = store.get(a);
+    getId.onsuccess = function() {
+        if (typeof getId.result !== 'undefined') {
+            // console.log(getId.result.amount);  // => "amount"
+            var a = getId.result.amount
+            console.log(a);
+        }else{
+            console.log("not found");
+        }
+    };   
+
+    // Close the db when the transaction is done
+    tx.oncomplete = function() {
+        db.close();
+    };
+}
+</script>
+                            <!-- <tr>
                                 <td>
                                     <img src="images/image-2.jpg" class="img-fluid">
                                     Optoma 4K HDR Projector
@@ -62,14 +99,14 @@
                                 <td>
                                     <button class="btn btn-link text-danger"><i class="fas fa-times"></i></button>
                                 </td>
-                            </tr>
+                            </tr> -->
                             </tbody>
                             <tfoot>
-                            <tr>
+                            <!-- <tr>
                                 <th colspan="3" class="text-right">هزینه کل</th>
                                 <th>40,000</th>
                                 <th></th>
-                            </tr>
+                            </tr> -->
                             </tfoot>
                         </table>
                     </div>
