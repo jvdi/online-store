@@ -26,7 +26,7 @@
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="dynamic">
 <script>
 // Open (or create) the database
 var open = indexedDB.open("site_data");
@@ -46,17 +46,28 @@ open.onsuccess = function() {
     var index = store.index("NameIndex");
 
     // Query the data
-    a=22;
-    var getId = store.get(a);
-    getId.onsuccess = function() {
-        if (typeof getId.result !== 'undefined') {
-            // console.log(getId.result.amount);  // => "amount"
-            var a = getId.result.amount
-            console.log(a);
-        }else{
-            console.log("not found");
-        }
-    };   
+    store.openCursor().onsuccess = function(event) {
+        var cursor = event.target.result;
+          if (cursor) {
+              const para1 = document.createElement("tr");
+              para1.setAttribute("id", "tr-"+cursor.value.id);
+              const element1 = document.getElementById("dynamic");
+              element1.appendChild(para1);
+
+              const para2 = document.createElement("td");
+              const node2 = document.createTextNode(cursor.key);
+              para2.appendChild(node2);
+              const node3 = document.createTextNode("----"+cursor.value.amount);
+              para2.appendChild(node3);
+              const element2 = document.getElementById("tr-"+cursor.value.id);
+              element2.appendChild(para2);
+              //document.write("Name for SSN " + cursor.key + " is " + cursor.value.id);
+              cursor.continue();
+          }
+          else {
+            console.log("No more entries!");
+          }
+    }   
 
     // Close the db when the transaction is done
     tx.oncomplete = function() {
