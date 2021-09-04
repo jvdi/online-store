@@ -27,54 +27,7 @@
                             </tr>
                             </thead>
                             <tbody id="dynamic">
-<script>
-// Open (or create) the database
-var open = indexedDB.open("site_data");
-
-// Create the schema
-open.onupgradeneeded = function() {
-    var db = open.result;
-    var store = db.createObjectStore("cart", {keyPath: "id"});
-    var index = store.createIndex("NameIndex", ["id",]);
-};
-
-open.onsuccess = function() {
-    // Start a new transaction
-    var db = open.result;
-    var tx = db.transaction("cart", "readwrite");
-    var store = tx.objectStore("cart");
-    var index = store.index("NameIndex");
-
-    // Query the data
-    store.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-          if (cursor) {
-              const para1 = document.createElement("tr");
-              para1.setAttribute("id", "tr-"+cursor.value.id);
-              const element1 = document.getElementById("dynamic");
-              element1.appendChild(para1);
-
-              const para2 = document.createElement("td");
-              const node2 = document.createTextNode(cursor.key);
-              para2.appendChild(node2);
-              const node3 = document.createTextNode("----"+cursor.value.amount);
-              para2.appendChild(node3);
-              const element2 = document.getElementById("tr-"+cursor.value.id);
-              element2.appendChild(para2);
-              //document.write("Name for SSN " + cursor.key + " is " + cursor.value.id);
-              cursor.continue();
-          }
-          else {
-            console.log("No more entries!");
-          }
-    }   
-
-    // Close the db when the transaction is done
-    tx.oncomplete = function() {
-        db.close();
-    };
-}
-</script>
+                            <script>product_list();</script>
                             <!-- <tr>
                                 <td>
                                     <img src="images/image-2.jpg" class="img-fluid">

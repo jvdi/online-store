@@ -1,46 +1,46 @@
 function add_cart(id){
-// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
-var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
-// Open (or create) the database
-var open = indexedDB.open("site_data");
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
 
-// Create the schema
-open.onupgradeneeded = function() {
-    var db = open.result;
-    var store = db.createObjectStore("cart", {keyPath: "id"});
-    var index = store.createIndex("NameIndex", ["id",]);
-};
-
-open.onsuccess = function() {
-    // Start a new transaction
-    var db = open.result;
-    var tx = db.transaction("cart", "readwrite");
-    var store = tx.objectStore("cart");
-    var index = store.index("NameIndex");
-
-    // Query the data
-    var getId = store.get(id);
-    getId.onsuccess = function() {
-        if (typeof getId.result !== 'undefined') {
-            // console.log(getId.result.amount);  // => "amount"
-            var a = getId.result.amount
-            var b = a+=1
-            store.put({id: id, amount: b});
-            document.getElementById('amount-'+id).innerHTML = b;
-        }else{
-            // Add some data
-            // store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
-            store.put({id: id, amount: 1});
-            document.getElementById('amount-'+id).innerHTML = 1;
-        }
-    };   
-
-    // Close the db when the transaction is done
-    tx.oncomplete = function() {
-        db.close();
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
     };
-}
+
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+
+        // Query the data
+        var getId = store.get(id);
+        getId.onsuccess = function() {
+            if (typeof getId.result !== 'undefined') {
+                // console.log(getId.result.amount);  // => "amount"
+                var a = getId.result.amount
+                var b = a+=1
+                store.put({id: id, amount: b});
+                document.getElementById('amount-'+id).innerHTML = b;
+            }else{
+                // Add some data
+                // store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
+                store.put({id: id, amount: 1});
+                document.getElementById('amount-'+id).innerHTML = 1;
+            }
+        };   
+
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
 };
 
 function check_cart(id){
@@ -120,6 +120,56 @@ function remove_cart(id){
             }
         };   
     
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+};
+
+
+function product_list() {
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
+
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
+    };
+
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+
+        // Query the data
+        store.openCursor().onsuccess = function(event) {
+            var cursor = event.target.result;
+              if (cursor) {
+                  const para1 = document.createElement("tr");
+                  para1.setAttribute("id", "tr-"+cursor.value.id);
+                  const element1 = document.getElementById("dynamic");
+                  element1.appendChild(para1);
+
+                  const para2 = document.createElement("td");
+                  const node2 = document.createTextNode(cursor.key);
+                  para2.appendChild(node2);
+                  const node3 = document.createTextNode("----"+cursor.value.amount);
+                  para2.appendChild(node3);
+                  const element2 = document.getElementById("tr-"+cursor.value.id);
+                  element2.appendChild(para2);
+                  //document.write("Name for SSN " + cursor.key + " is " + cursor.value.id);
+                  cursor.continue();
+              }
+              else {
+                // console.log("No more entries!");
+              }
+        }   
+
         // Close the db when the transaction is done
         tx.oncomplete = function() {
             db.close();
