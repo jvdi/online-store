@@ -28,11 +28,15 @@ function add_cart(id){
                 var b = a+=1
                 store.put({id: id, amount: b});
                 document.getElementById('amount-'+id).innerHTML = b;
+                header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                document.getElementById("header-qty").innerHTML = header_qty+=1;
             }else{
                 // Add some data
                 // store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
                 store.put({id: id, amount: 1});
                 document.getElementById('amount-'+id).innerHTML = 1;
+                a = parseInt(document.getElementById("header-qty").innerHTML);
+                document.getElementById("header-qty").innerHTML = a+=1;
             }
         };   
 
@@ -113,9 +117,13 @@ function remove_cart(id){
                     // alert("zero");
                     store.delete(id);
                     document.getElementById('amount-'+id).innerHTML = 0;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML -= 1;
                 }else{
-                store.put({id: id, amount: b});
-                document.getElementById('amount-'+id).innerHTML = b;
+                    store.put({id: id, amount: b});
+                    document.getElementById('amount-'+id).innerHTML = b;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML -=1;
                 }
             }
         };   
