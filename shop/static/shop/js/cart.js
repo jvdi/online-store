@@ -1,4 +1,4 @@
-function add_cart(id){
+function add_cart(id, nme, prc){
     // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
@@ -26,14 +26,14 @@ function add_cart(id){
                 // console.log(getId.result.amount);  // => "amount"
                 var a = getId.result.amount
                 var b = a+=1
-                store.put({id: id, amount: b});
+                store.put({id: id, name: nme, price: prc, amount: b});
                 document.getElementById('amount-'+id).innerHTML = b;
                 header_qty = parseInt(document.getElementById("header-qty").innerHTML);
                 document.getElementById("header-qty").innerHTML = header_qty+=1;
             }else{
                 // Add some data
                 // store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
-                store.put({id: id, amount: 1});
+                store.put({id: id, name: nme, price: prc, amount: 1});
                 document.getElementById('amount-'+id).innerHTML = 1;
                 a = parseInt(document.getElementById("header-qty").innerHTML);
                 document.getElementById("header-qty").innerHTML = a+=1;
