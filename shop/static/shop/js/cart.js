@@ -164,12 +164,31 @@ function product_list() {
                   element1.appendChild(para1);
 
                   const para2 = document.createElement("td");
-                  const node2 = document.createTextNode(cursor.key);
+                  const node2 = document.createTextNode(cursor.value.name);
                   para2.appendChild(node2);
-                  const node3 = document.createTextNode("----"+cursor.value.amount);
-                  para2.appendChild(node3);
-                  const element2 = document.getElementById("tr-"+cursor.value.id);
-                  element2.appendChild(para2);
+
+                  const para3 = document.createElement("td");
+                  const node3 = document.createTextNode((cursor.value.amount)*(cursor.value.price));
+                  para3.appendChild(node3);
+
+                  const para4 = document.createElement("td");
+                  const node4 = document.createTextNode(cursor.value.amount);
+                  para4.appendChild(node4);
+
+                  const para5 = document.createElement("td");
+                  const node5 = document.createTextNode(cursor.value.price);
+                  para5.appendChild(node5);
+
+                  const para6 = document.createElement("td");
+                  const node6 = document.createTextNode("*");
+                  para6.appendChild(node6);
+
+                  const myelement = document.getElementById("tr-"+cursor.value.id);
+                  myelement.appendChild(para2);
+                  myelement.appendChild(para3);
+                  myelement.appendChild(para4);
+                  myelement.appendChild(para5);
+                  myelement.appendChild(para6);
                   //document.write("Name for SSN " + cursor.key + " is " + cursor.value.id);
                   cursor.continue();
               }
