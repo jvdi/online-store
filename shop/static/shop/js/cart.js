@@ -180,7 +180,10 @@ function product_list() {
                   para5.appendChild(node5);
 
                   const para6 = document.createElement("td");
-                  const node6 = document.createTextNode("*");
+                  const node6 = document.createElement("img");
+                  node6.setAttribute("src", "/static/shop/images/tools/remove.png");
+                  node6.setAttribute("width", "20rem");
+                  // node6.setAttribute("onclick", "remove_product("+cursor.value.id+")");
                   para6.appendChild(node6);
 
                   const myelement = document.getElementById("tr-"+cursor.value.id);
