@@ -85,7 +85,7 @@ function check_cart(id){
 };
 
 
-function remove_cart(id){
+function remove_cart(id, nme, prc){
     // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
     
@@ -120,7 +120,7 @@ function remove_cart(id){
                     header_qty = parseInt(document.getElementById("header-qty").innerHTML);
                     document.getElementById("header-qty").innerHTML -= 1;
                 }else{
-                    store.put({id: id, amount: b});
+                    store.put({id: id, name: nme, price: prc, amount: b});
                     document.getElementById('amount-'+id).innerHTML = b;
                     header_qty = parseInt(document.getElementById("header-qty").innerHTML);
                     document.getElementById("header-qty").innerHTML -=1;
