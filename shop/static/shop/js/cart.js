@@ -173,6 +173,7 @@ function product_list() {
 
                   const para4 = document.createElement("td");
                   const node4 = document.createTextNode(cursor.value.amount);
+                  para4.setAttribute("id", "amount-"+cursor.value.id);
                   para4.appendChild(node4);
 
                   const para5 = document.createElement("td");
@@ -183,7 +184,7 @@ function product_list() {
                   const node6 = document.createElement("img");
                   node6.setAttribute("src", "/static/shop/images/tools/remove.png");
                   node6.setAttribute("width", "20rem");
-                  // node6.setAttribute("onclick", "remove_product("+cursor.value.id+")");
+                  node6.setAttribute("onclick", "remove_product("+cursor.value.id+", '"+cursor.value.name+"', '"+cursor.value.price+"')");
                   para6.appendChild(node6);
 
                   const myelement = document.getElementById("tr-"+cursor.value.id);
@@ -200,6 +201,56 @@ function product_list() {
               }
         }   
 
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+};
+
+function remove_product(id, nme, prc){
+    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+    
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
+    
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
+    };
+    
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+    
+        // Query the data
+        var getId = store.get(id);
+        getId.onsuccess = function() {
+            if (typeof getId.result !== 'undefined') {
+                // console.log(getId.result.amount);  // => "amount"
+                var a = getId.result.amount
+                var b = a-=1
+                if (b <= 0) {
+                    // alert("zero");
+                    store.delete(id);
+                    document.getElementById('amount-'+id).innerHTML = 0;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML -= 1;
+                }else{
+                    store.put({id: id, name: nme, price: prc, amount: b});
+                    document.getElementById('amount-'+id).innerHTML = b;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML -=1;
+                }
+            }
+        };   
+    
         // Close the db when the transaction is done
         tx.oncomplete = function() {
             db.close();
