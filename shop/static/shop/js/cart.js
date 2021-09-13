@@ -187,12 +187,20 @@ function product_list() {
                   node6.setAttribute("onclick", "remove_product("+cursor.value.id+", '"+cursor.value.name+"', '"+cursor.value.price+"')");
                   para6.appendChild(node6);
 
+                  const para7 = document.createElement("td");
+                  const node7 = document.createElement("img");
+                  node7.setAttribute("src", "/static/shop/images/tools/add_plus.png");
+                  node7.setAttribute("width", "20rem");
+                  node7.setAttribute("onclick", "add_product("+cursor.value.id+", '"+cursor.value.name+"', '"+cursor.value.price+"')");
+                  para7.appendChild(node7);
+
                   const myelement = document.getElementById("tr-"+cursor.value.id);
                   myelement.appendChild(para2);
                   myelement.appendChild(para3);
                   myelement.appendChild(para4);
                   myelement.appendChild(para5);
                   myelement.appendChild(para6);
+                  myelement.appendChild(para7);
                   //document.write("Name for SSN " + cursor.key + " is " + cursor.value.id);
                   cursor.continue();
               }
@@ -247,6 +255,56 @@ function remove_product(id, nme, prc){
                     document.getElementById('amount-'+id).innerHTML = b;
                     header_qty = parseInt(document.getElementById("header-qty").innerHTML);
                     document.getElementById("header-qty").innerHTML -=1;
+                }
+            }
+        };   
+    
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+};
+
+function add_product(id, nme, prc){
+    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+    
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
+    
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
+    };
+    
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+    
+        // Query the data
+        var getId = store.get(id);
+        getId.onsuccess = function() {
+            if (typeof getId.result !== 'undefined') {
+                // console.log(getId.result.amount);  // => "amount"
+                var a = getId.result.amount
+                var b = a+=1
+                if (b <= 0) {
+                    // alert("zero");
+                    store.put({id: id, name: nme, price: prc, amount: b});
+                    document.getElementById('amount-'+id).innerHTML = b;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML += 1;
+                }else{
+                    store.put({id: id, name: nme, price: prc, amount: b});
+                    document.getElementById('amount-'+id).innerHTML = b;
+                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML +=1;
                 }
             }
         };   
