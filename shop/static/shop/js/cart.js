@@ -303,8 +303,8 @@ function add_product(id, nme, prc){
                 }else{
                     store.put({id: id, name: nme, price: prc, amount: b});
                     document.getElementById('amount-'+id).innerHTML = b;
-                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
-                    document.getElementById("header-qty").innerHTML +=1;
+                    // header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById("header-qty").innerHTML++;
                 }
             }
         };   
