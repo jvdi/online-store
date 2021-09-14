@@ -217,9 +217,6 @@ function product_list() {
 };
 
 function remove_product(id, nme, prc){
-    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
-    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-    
     // Open (or create) the database
     var open = indexedDB.open("site_data");
     
@@ -241,19 +238,15 @@ function remove_product(id, nme, prc){
         var getId = store.get(id);
         getId.onsuccess = function() {
             if (typeof getId.result !== 'undefined') {
-                // console.log(getId.result.amount);  // => "amount"
                 var a = getId.result.amount
                 var b = a-=1
                 if (b <= 0) {
-                    // alert("zero");
                     store.delete(id);
-                    document.getElementById('amount-'+id).innerHTML = 0;
-                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
+                    document.getElementById('tr-'+id).remove();
                     document.getElementById("header-qty").innerHTML -= 1;
                 }else{
                     store.put({id: id, name: nme, price: prc, amount: b});
                     document.getElementById('amount-'+id).innerHTML = b;
-                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
                     document.getElementById("header-qty").innerHTML -=1;
                 }
             }
@@ -267,9 +260,6 @@ function remove_product(id, nme, prc){
 };
 
 function add_product(id, nme, prc){
-    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
-    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-    
     // Open (or create) the database
     var open = indexedDB.open("site_data");
     
@@ -278,7 +268,7 @@ function add_product(id, nme, prc){
         var db = open.result;
         var store = db.createObjectStore("cart", {keyPath: "id"});
         var index = store.createIndex("NameIndex", ["id",]);
-    };
+    }
     
     open.onsuccess = function() {
         // Start a new transaction
@@ -291,27 +281,17 @@ function add_product(id, nme, prc){
         var getId = store.get(id);
         getId.onsuccess = function() {
             if (typeof getId.result !== 'undefined') {
-                // console.log(getId.result.amount);  // => "amount"
                 var a = getId.result.amount
                 var b = a+=1
-                if (b <= 0) {
-                    // alert("zero");
-                    store.put({id: id, name: nme, price: prc, amount: b});
-                    document.getElementById('amount-'+id).innerHTML = b;
-                    header_qty = parseInt(document.getElementById("header-qty").innerHTML);
-                    document.getElementById("header-qty").innerHTML += 1;
-                }else{
-                    store.put({id: id, name: nme, price: prc, amount: b});
-                    document.getElementById('amount-'+id).innerHTML = b;
-                    // header_qty = parseInt(document.getElementById("header-qty").innerHTML);
-                    document.getElementById("header-qty").innerHTML++;
-                }
+                store.put({id: id, name: nme, price: prc, amount: b});
+                document.getElementById('amount-'+id).innerHTML = b;
+                document.getElementById("header-qty").innerHTML++;
             }
         };   
     
         // Close the db when the transaction is done
         tx.oncomplete = function() {
             db.close();
-        };
+        }
     }
-};
+}
