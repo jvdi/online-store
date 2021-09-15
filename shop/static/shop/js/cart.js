@@ -146,7 +146,7 @@ function product_list() {
         var store = db.createObjectStore("cart", {keyPath: "id"});
         var index = store.createIndex("NameIndex", ["id",]);
     };
-
+    
     open.onsuccess = function() {
         // Start a new transaction
         var db = open.result;
@@ -168,6 +168,10 @@ function product_list() {
                   para2.appendChild(node2);
 
                   const para3 = document.createElement("td");
+                  var total_prc = parseInt((cursor.value.amount)*(cursor.value.price));
+                  var total_tag = parseInt(document.getElementById("total-prc").innerHTML);
+                  var my_result = total_tag += total_prc;
+                  document.getElementById("total-prc").innerHTML = my_result;
                   const node3 = document.createTextNode((cursor.value.amount)*(cursor.value.price));
                   para3.appendChild(node3);
 
