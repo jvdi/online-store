@@ -302,3 +302,43 @@ function add_product(id, nme, prc){
         }
     }
 }
+
+function cart_amount() {
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
+
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
+    };
+
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+
+        am_ca = 0;
+
+        // Query the data
+        store.openCursor().onsuccess = function(event) {
+            var cursor = event.target.result;
+              if (cursor) {
+                  am_ca += cursor.value.amount;
+                  cursor.continue();
+              }
+              else {
+                // console.log("No more entries!");
+                // console.log(am_ca);
+                document.getElementById("header-qty").innerHTML = am_ca;
+              }
+        }
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+}

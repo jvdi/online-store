@@ -2,15 +2,6 @@
 {% block title %}فروشگاه اینترنتی - خانه{% endblock title %}
 {% block body %}{% load static %}
 {% include 'shop/partials/header.html' %}
-<script>
-// Change img:src in products
-function img_src(product_name, loop_id) {
-    var img = document.getElementById("img-id-"+product_name+"_products"+loop_id);
-    var attr = img.getAttributeNode("src").value;
-    var custom_src = attr.replace("/mysite/shop/static/","/static/");
-    document.getElementById("img-id-"+product_name+"_products"+loop_id).src = custom_src;    
-}
-</script>
 <!-- Main Content -->
 <div class="col-12">
 <main class="row">

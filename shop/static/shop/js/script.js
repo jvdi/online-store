@@ -1,3 +1,4 @@
+// JQ - script for nav
 $(function() {
 
     $('.nav-item.dropdown').mouseenter(function() {
@@ -51,4 +52,12 @@ function setImgSmall() {
     var imgSmall = $('.img-small');
     var width = imgSmall.width();
     imgSmall.height(width);
+}
+
+// Change img:src in products
+function img_src(product_name, loop_id) {
+    var img = document.getElementById("img-id-"+product_name+"_products"+loop_id);
+    var attr = img.getAttributeNode("src").value;
+    var custom_src = attr.replace("/mysite/shop/static/","/static/");
+    document.getElementById("img-id-"+product_name+"_products"+loop_id).src = custom_src;    
 }
