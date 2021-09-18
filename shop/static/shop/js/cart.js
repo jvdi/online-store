@@ -135,6 +135,47 @@ function remove_cart(id, nme, prc){
     }
 };
 
+function cart_total_prc() {
+    // Open (or create) the database
+    var open = indexedDB.open("site_data");
+
+    // Create the schema
+    open.onupgradeneeded = function() {
+        var db = open.result;
+        var store = db.createObjectStore("cart", {keyPath: "id"});
+        var index = store.createIndex("NameIndex", ["id",]);
+    };
+
+    open.onsuccess = function() {
+        // Start a new transaction
+        var db = open.result;
+        var tx = db.transaction("cart", "readwrite");
+        var store = tx.objectStore("cart");
+        var index = store.index("NameIndex");
+
+        let my_amount = 0;
+        let my_nu1 = 0;
+        let my_nu2 = 0;
+
+        // Query the data
+        store.openCursor().onsuccess = function(event) {
+            var cursor = event.target.result;
+              if (cursor) {
+                  my_nu1 = parseInt(cursor.value.amount);
+                  my_nu2 = parseInt(cursor.value.price);
+                  my_amount += my_nu1*my_nu2;
+                  cursor.continue();
+              }
+              else {
+                document.getElementById("total-prc").innerHTML = my_amount;
+              }
+        }
+        // Close the db when the transaction is done
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+}
 
 function product_list() {
     // Open (or create) the database
@@ -249,11 +290,13 @@ function remove_product(id, nme, prc){
                     store.delete(id);
                     document.getElementById('tr-'+id).remove();
                     document.getElementById("header-qty").innerHTML -= 1;
+                    cart_total_prc();
                 }else{
                     store.put({id: id, name: nme, price: prc, amount: b});
                     document.getElementById('amount-'+id).innerHTML = b;
                     document.getElementById("header-qty").innerHTML -=1;
                     document.getElementById("tp-"+id).innerHTML = prc*b;
+                    cart_total_prc();
                 }
             }
         };   
@@ -294,6 +337,7 @@ function add_product(id, nme, prc){
                 document.getElementById("header-qty").innerHTML++;
                 var new_total = prc*b;
                 document.getElementById("tp-"+id).innerHTML = new_total;
+                cart_total_prc();
             }
         };   
     
