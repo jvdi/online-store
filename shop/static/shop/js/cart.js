@@ -253,6 +253,7 @@ function remove_product(id, nme, prc){
                     store.put({id: id, name: nme, price: prc, amount: b});
                     document.getElementById('amount-'+id).innerHTML = b;
                     document.getElementById("header-qty").innerHTML -=1;
+                    document.getElementById("tp-"+id).innerHTML = prc*b;
                 }
             }
         };   
