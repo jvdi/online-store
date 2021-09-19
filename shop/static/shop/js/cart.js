@@ -1,3 +1,4 @@
+// Add product to cart from index.html
 function add_cart(id, nme, prc){
     // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
