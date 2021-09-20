@@ -19,3 +19,7 @@ def cart(request):
     context={}
     # render for send variable and detail to template
     return render(request, 'shop/cart.html', context)
+
+def login(request):
+    context={}
+    return render(request, 'shop/login.html', context)
