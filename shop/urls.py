@@ -9,5 +9,7 @@ urlpatterns = [
     # ex: cart/
     path('cart/', views.cart, name='cart'),
     # ex: login/
-    path("login/", views.login, name="login")
+    path("login/", views.login, name="login"),
+    # ex: regiser
+    path("register/", views.register, name="register")
 ]
