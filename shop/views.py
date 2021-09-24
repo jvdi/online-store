@@ -23,3 +23,7 @@ def cart(request):
 def login(request):
     context={}
     return render(request, 'shop/login.html', context)
+
+def register(request):
+    context={}
+    return render(request, 'shop/register.html', context)
