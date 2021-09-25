@@ -21,9 +21,13 @@ def cart(request):
     return render(request, 'shop/cart.html', context)
 
 def login(request):
+    # dictionary for compile template -> variables
     context={}
+    # render for send variable and detail to template
     return render(request, 'shop/login.html', context)
 
 def register(request):
+    # dictionary for compile template -> variables
     context={}
+    # render for send variable and detail to template
     return render(request, 'shop/register.html', context)
