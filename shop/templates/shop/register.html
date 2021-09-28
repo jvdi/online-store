@@ -2,51 +2,49 @@
 {% block title %}فروشگاه اینترنتی - ثبت نام{% endblock title %}
 {% block body %}{% load static %}
 {% include 'shop/partials/header.html' %}
-            <!-- Main Content -->
+<!-- Main Content -->
+<div class="col-12">
+<div class="row">
+    <div class="col-12 mt-3 text-center text-uppercase">
+        <h2>ثبت نام</h2>
+    </div>
+</div>
+<main class="row">
+    <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
+        <div class="row">
             <div class="col-12">
-                <div class="row">
-                    <div class="col-12 mt-3 text-center text-uppercase">
-                        <h2>Register</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">نام</label>
+                        <input type="text" id="name" class="form-control" required>
                     </div>
-                </div>
-
-                <main class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
-                        <div class="row">
-                            <div class="col-12">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" id="password" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password-confirm">Confirm Password</label>
-                                        <input type="password" id="password-confirm" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input type="checkbox" id="agree" class="form-check-input" required>
-                                            <label for="agree" class="form-check-label ml-2">I agree to Terms and Conditions</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-dark">Register</button>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="form-group">
+                        <label for="email">ایمیل</label>
+                        <input style="direction: rtl;" type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">رمز عبور</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm">تایید رمز عبور</label>
+                        <input type="password" id="password-confirm" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="agree" class="form-check-input" required>
+                            <label for="agree" class="form-check-label ml-2">قوانین و وضعیت های شما را می پذیرم</label>
                         </div>
                     </div>
-
-                </main>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-dark">ثبت نام</button>
+                    </div>
+                </form>
             </div>
-            <!-- Main Content - end -->
+        </div>
+    </div>
+</main>
+</div>
+<!-- Main Content - end -->
 {% include 'shop/partials/footer.html' %}
 {% endblock body %}
