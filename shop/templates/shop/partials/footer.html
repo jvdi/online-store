@@ -4,6 +4,7 @@
 <footer class="row">
     <div class="col-12 bg-dark text-white pb-3 pt-5">
         <div class="row">
+            {% if not request.get_full_path == "/register/" and not request.get_full_path == "/login/" %}
             <div class="col-lg-2 col-sm-4 text-center text-sm-right mb-sm-0 mb-3">
                 <div class="row">
                     <div class="col-12">
@@ -107,6 +108,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div dir="ltr" class="col-md-12 text-center">
                 <h4 style="background-color: #c0c0c0; color:black;">Copyright &copy; Muhammad Sameem - Redesign by Mohammad Javidi - upgrade to bootstrap5 and use carusel and etc ...</h4>
             </div>
