@@ -4,6 +4,7 @@
 <footer class="row">
     <div class="col-12 bg-dark text-white pb-3 pt-5">
         <div class="row">
+            {% comment %} Hide footer link in login and register page {% endcomment %}
             {% if not request.get_full_path == "/register/" and not request.get_full_path == "/login/" %}
             <div class="col-lg-2 col-sm-4 text-center text-sm-right mb-sm-0 mb-3">
                 <div class="row">
