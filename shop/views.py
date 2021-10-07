@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from .models import Product
 
+# view for index page : show last post(product)
 def index(request):
     special_product_list = Product.objects.filter(special=1).order_by('-insert_date')
     latest_product_list = Product.objects.order_by('-insert_date')[:8]
