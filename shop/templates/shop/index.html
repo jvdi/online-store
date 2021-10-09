@@ -30,6 +30,7 @@
         <div class="carousel-item active">
         <div class="row">
 
+        {% comment %} use divisibleby for div -> post{% endcomment %}
         {% for data in special_product_list %}
         {% if forloop.counter < 9 %}
         {% if forloop.counter|divisibleby:5 %}
