@@ -4,6 +4,7 @@ from .models import Product
 
 # view for index page : show last post(product)
 def index(request):
+    # get data from database with special filter or order
     special_product_list = Product.objects.filter(special=1).order_by('-insert_date')
     latest_product_list = Product.objects.order_by('-insert_date')[:8]
     top_selling_product_list = Product.objects.order_by('-selling')[:8]
