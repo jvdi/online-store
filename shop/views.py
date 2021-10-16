@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from decouple import config
 
 # zarinpal
 from django.http import HttpResponse
@@ -42,13 +43,13 @@ def register(request):
     return render(request, 'shop/register.html', context)
 
 # zarinpal - pay
-MERCHANT = '0'
+MERCHANT = config('MERCHANT_CODE')
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
-ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{aut}"
-amount = 0  # Rial / Required
+ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
+amount = 11000  # Rial / Required
 description = "تراکنش آزمایشی"  # Required
-email = 'local@local.lo'  # Optional
+email = 'm.javidii@yahoo.com'  # Optional
 mobile = '09123456789'  # Optional
 # Important: need to edit for realy server.
 CallbackURL = 'http://127.0.0.1:8000/verify/'
