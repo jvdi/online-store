@@ -1,5 +1,6 @@
 from django.db import models
 
+# Table for store product name nad detail
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name="نام محصول")
     special = models.BooleanField(verbose_name="محصول ویژه")
