@@ -43,6 +43,7 @@ def register(request):
     return render(request, 'shop/register.html', context)
 
 # zarinpal - pay
+# for start pay and verify pay in site by zpal
 MERCHANT = config('MERCHANT_CODE')
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
