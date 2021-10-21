@@ -13,6 +13,8 @@ urlpatterns = [
     # ex: regiser
     path("register/", views.register, name="register"),
     # zarinpal pay-url
+    # For start pay
     path('request/', views.send_request, name='request'),
+    # For verify payment
     path('verify/', views.verify, name='verify'),
 ]
