@@ -1,5 +1,7 @@
-# online-store
+# Online Store
 
 Online store website by django
 
-Ui -> Muhammad Sameem - edited by Mohammad Javidi
+Back-end : Mohammad Javidi -- Powered by Django Freamwork
+
+Front-end : Ui -> Muhammad Sameem - Update & edited by Mohammad Javidi
