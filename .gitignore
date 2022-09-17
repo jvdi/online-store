@@ -1,4 +1,5 @@
 .env
 __pycache__
-*-dist
-images
+todo.txt
+04_dj_170821_online-store_req
+.vscode
